@@ -1,4 +1,12 @@
 <script type="text/javascript">
+  /**
+   * `PolymerLoggerBuilder` provides a means of constructing a
+   * PolymerLoggerMixin instance.
+   *
+   * @param appLabel Your global log label
+   * @polymerBehavior PolymerLoggerBuilder
+   * @return Returns a mixin with custom log label
+   */
   const PolymerLoggerBuilder = appLabel => {
 
     const lineNumberRegex  = /:[0-9]+:[0-9]+/;
@@ -21,12 +29,38 @@
     return superclass => class extends superclass {
       constructor() {
         super();
+        /**
+         * Exposed 'LOGGER' property with 4 child methods:
+         * debug, error, info and warn.
+         *
+         * @attribute LOGGER
+         */
         Object.defineProperty(this, 'LOGGER', {
           configurable: false,
           value: {
+            /**
+             * Log with debug level.
+             *
+             * @method debug
+             */
             debug: message => console.debug(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with error level.
+             *
+             * @method error
+             */
             error: message => console.error(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with info level.
+             *
+             * @method info
+             */
             info: message => console.info(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with warning level.
+             *
+             * @method warn
+             */
             warn: message => console.warn(labelCreator(this.constructor.is) + " : " + message)
           }
         });
