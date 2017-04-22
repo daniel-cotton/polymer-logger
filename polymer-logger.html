@@ -1,0 +1,21 @@
+<script type="text/javascript">
+  const PolymerLoggerBuilder = appLabel => {
+
+    let labelCreator = element => "[" + appLabel + " - <" + element + ">]";
+
+    return superclass => class extends superclass {
+      constructor() {
+        super();
+        Object.defineProperty(this, 'LOGGER', {
+          configurable: false,
+          value: {
+            debug: message => console.debug(labelCreator(this.constructor.is) + " : " + message),
+            error: message => console.error(labelCreator(this.constructor.is) + " : " + message),
+            info: message => console.info(labelCreator(this.constructor.is) + " : " + message),
+            warn: message => console.warn(labelCreator(this.constructor.is) + " : " + message)
+          }
+        });
+      }
+    }
+  }
+</script>
