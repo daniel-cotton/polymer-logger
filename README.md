@@ -35,7 +35,10 @@ Now we just need to use it within our various components.
 
 ### Component Usage
 
-To use inside your app components, simply import the mixin you created.
+To use inside your app components, simply import the mixin you created and use via the following syntax:
+> this.LOGGER.debug
+
+We support info, error, debug and warn log-levels. Full example:
 
 ```html
 <link rel="import" href="my-logger.html" >
