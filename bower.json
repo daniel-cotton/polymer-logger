@@ -1,0 +1,17 @@
+{
+  "name": "polymer-logger",
+  "homepage": "https://github.com/daniel-cotton/polymer-logger",
+  "authors": [
+    "Daniel Cotton <dan@daniel-cotton.co.uk>"
+  ],
+  "description": "A simple logging mixin for Polymer 2.0. It provides logging labels at both a global and component level, in addition to line-number/column logging.",
+  "main": "polymer-logger.html",
+  "keywords": [
+    "Polymer",
+    "Polymer2.0",
+    "Logging",
+    "Log-Label",
+    "polymer-2.0"
+  ],
+  "license": "MIT"
+}
