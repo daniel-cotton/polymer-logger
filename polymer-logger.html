@@ -26,45 +26,44 @@
 
     let labelCreator = element => "[" + appLabel + " - <" + element + ">" + getCallingLine() + "]";
 
-    let properties = {
-
-      /**
-       * Exposed 'LOGGER' property with 4 child methods:
-       * debug, error, info and warn.
-       *
-       * @attribute LOGGER
-       */
-      LOGGER: {
-        /**
-         * Log with debug level.
-         *
-         * @method debug
-         */
-        debug: message => console.debug(labelCreator(this.constructor.is) + " : " + message),
-        /**
-         * Log with error level.
-         *
-         * @method error
-         */
-        error: message => console.error(labelCreator(this.constructor.is) + " : " + message),
-        /**
-         * Log with info level.
-         *
-         * @method info
-         */
-        info: message => console.info(labelCreator(this.constructor.is) + " : " + message),
-        /**
-         * Log with warning level.
-         *
-         * @method warn
-         */
-        warn: message => console.warn(labelCreator(this.constructor.is) + " : " + message)
-      }
-    };
-
     return superclass => class extends superclass {
       constructor() {
         super();
+        const properties = {
+
+          /**
+           * Exposed 'LOGGER' property with 4 child methods:
+           * debug, error, info and warn.
+           *
+           * @attribute LOGGER
+           */
+          LOGGER: {
+            /**
+             * Log with debug level.
+             *
+             * @method debug
+             */
+            debug: message => console.debug(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with error level.
+             *
+             * @method error
+             */
+            error: message => console.error(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with info level.
+             *
+             * @method info
+             */
+            info: message => console.info(labelCreator(this.constructor.is) + " : " + message),
+            /**
+             * Log with warning level.
+             *
+             * @method warn
+             */
+            warn: message => console.warn(labelCreator(this.constructor.is) + " : " + message)
+          }
+        };
         Object.defineProperty(this, 'LOGGER', {
           configurable: false,
           value: properties.LOGGER
